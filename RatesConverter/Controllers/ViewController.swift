@@ -7,15 +7,18 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDataSource {
-    var currency: [String] = []
-    var values: [Double] = []
-    var currentRate: Double = 0.0
-    
+class ViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var labelResult: UILabel!
     @IBOutlet weak var textFieldInput: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
     
+    // MARK: - Properties
+    var currency: [String] = []
+    var values: [Double] = []
+    var currentRate: Double = 0.0
+    
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerView.delegate = self
@@ -51,10 +54,9 @@ class ViewController: UIViewController, UIPickerViewDataSource {
     }
     
     func calculate() {
-        guard textFieldInput.text != "" else {return}
-        print(textFieldInput.text)
-        print(currentRate)
-        labelResult.text = "\(currentRate * Double(textFieldInput.text!)!)"
+        if textFieldInput.text != "" {
+            labelResult.text = "\(currentRate * Double(textFieldInput.text!)!)"
+        }
     }
 }
 
@@ -68,21 +70,21 @@ extension ViewController: UITextFieldDelegate {
 }
 
 // MARK: - UIPickerViewDelegate
-extension ViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        currency.count
-    }
-    
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        currency.count
+    }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        currentRate = values[row]
         return currency[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        currentRate = values[row]
         calculate()
     }
 }
