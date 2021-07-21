@@ -24,23 +24,27 @@ class ViewController: UIViewController, UIPickerViewDataSource {
         getRates()
     }
     
-    struct Rates: Decodable {
-        let rates: [String: Double]
-    }
-
     func getRates() {
-        URLSession.shared.dataTask(with: URL(string: "https://openexchangerates.org/api/latest.json?app_id=\(K.apiKey)")!) { data, response, error in
-            guard error == nil else {return}
+        guard let url = URL(string: "https://openexchangerates.org/api/latest.json?app_id=\(K.apiKey)") else {return}
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard let safeData = data else {return}
             
             do {
-                let data = try JSONDecoder().decode(Rates.self, from: data!)
-                self.currency.append(contentsOf: data.rates.keys)
-                self.values.append(contentsOf: data.rates.values)
+                let results = try JSONDecoder().decode(Rates.self, from: safeData)
+                self.currency.append(contentsOf: results.rates.keys)
+                self.values.append(contentsOf: results.rates.values)
                 
                 DispatchQueue.main.async {
                     self.pickerView.reloadAllComponents()
                 }
             } catch {
+                print(error)
                 return
             }
         }.resume()
