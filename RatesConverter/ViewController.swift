@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class ViewController: UIViewController, UIPickerViewDataSource {
     var currency: [String] = []
     var values: [Double] = []
     var currentRate: Double = 0.0
@@ -46,6 +46,25 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }.resume()
     }
     
+    func calculate() {
+        guard textFieldInput.text != "" else {return}
+        print(textFieldInput.text)
+        print(currentRate)
+        labelResult.text = "\(currentRate * Double(textFieldInput.text!)!)"
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        calculate()
+        self.view.endEditing(true)
+        return true
+    }
+}
+
+// MARK: - UIPickerViewDelegate
+extension ViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         currency.count
     }
@@ -62,19 +81,5 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         calculate()
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        calculate()
-        self.view.endEditing(true)
-        return true
-    }
-    
-    func calculate() {
-        guard textFieldInput.text != "" else {return}
-        print(textFieldInput.text)
-        print(currentRate)
-        labelResult.text = "\(currentRate * Double(textFieldInput.text!)!)"
-    }
 }
-
 
