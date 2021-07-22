@@ -17,27 +17,32 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         ratesManager.delegate = self
+        textFieldInput.delegate = self
         pickerView.delegate = self
         pickerView.dataSource = self
+        
         ratesManager.getRates()
-        pickerView.reloadAllComponents()
-        //        textFieldInput.delegate = self
+        
+        textFieldInput.text = "0"
     }
 }
-
 
 // MARK: - RatesManagerDelegate
 extension ViewController: RatesManagerDelegate {
     func didUpdateRates() {
         DispatchQueue.main.async {
-//            self.labelResult.text = "\(self.currentRate * Double(self.textFieldInput.text!)!)"
-            self.labelResult.text = "\(self.currentRate)"
+            if self.textFieldInput.text == "" {
+                self.labelResult.text = "Enter the value"
+                return
+            }
+            
+            self.labelResult.text = "\(self.currentRate * Double(self.textFieldInput.text!)!)"
             self.pickerView.reloadAllComponents()
         }
     }
 }
-
 
 // MARK: - UIPickerViewDelegate
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -59,13 +64,18 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-
 // MARK: - UITextFieldDelegate
-//extension ViewController: UITextFieldDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        didUpdateRates()
-//        self.view.endEditing(true)
-//        return true
-//    }
-//}
-
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        didUpdateRates()
+        self.view.endEditing(true)
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = "1234567890"
+        let allowedCharactersSet = CharacterSet(charactersIn: allowedCharacters)
+        let typedCharactersSet = CharacterSet(charactersIn: string)
+        return allowedCharactersSet.isSuperset(of: typedCharactersSet)
+    }
+}
