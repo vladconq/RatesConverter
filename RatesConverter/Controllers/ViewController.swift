@@ -8,66 +8,36 @@
 import UIKit
 
 class ViewController: UIViewController {
-    // MARK: - IBOutlets
     @IBOutlet weak var labelResult: UILabel!
     @IBOutlet weak var textFieldInput: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    // MARK: - Properties
-    var currency: [String] = []
-    var values: [Double] = []
+    var ratesManager = RatesManager()
     var currentRate: Double = 0.0
     
-    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
+        ratesManager.delegate = self
         pickerView.delegate = self
         pickerView.dataSource = self
-        textFieldInput.delegate = self
-        getRates()
+        ratesManager.getRates()
+        pickerView.reloadAllComponents()
+        //        textFieldInput.delegate = self
     }
-    
-    func getRates() {
-        guard let url = URL(string: "https://openexchangerates.org/api/latest.json?app_id=\(K.apiKey)") else {return}
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil else {
-                print(error!)
-                return
-            }
-            
-            guard let safeData = data else {return}
-            
-            do {
-                let results = try JSONDecoder().decode(Rates.self, from: safeData)
-                self.currency.append(contentsOf: results.rates.keys)
-                self.values.append(contentsOf: results.rates.values)
-                
-                DispatchQueue.main.async {
-                    self.pickerView.reloadAllComponents()
-                }
-            } catch {
-                print(error)
-                return
-            }
-        }.resume()
-    }
-    
-    func calculate() {
-        if textFieldInput.text != "" {
-            labelResult.text = "\(currentRate * Double(textFieldInput.text!)!)"
+}
+
+
+// MARK: - RatesManagerDelegate
+extension ViewController: RatesManagerDelegate {
+    func didUpdateRates() {
+        DispatchQueue.main.async {
+//            self.labelResult.text = "\(self.currentRate * Double(self.textFieldInput.text!)!)"
+            self.labelResult.text = "\(self.currentRate)"
+            self.pickerView.reloadAllComponents()
         }
     }
 }
 
-// MARK: - UITextFieldDelegate
-extension ViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        calculate()
-        self.view.endEditing(true)
-        return true
-    }
-}
 
 // MARK: - UIPickerViewDelegate
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -76,16 +46,26 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        currency.count
+        return ratesManager.currencyCode.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return currency[row]
+        return ratesManager.currencyCode[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currentRate = values[row]
-        calculate()
+        currentRate = ratesManager.values[row]
+        didUpdateRates()
     }
 }
+
+
+// MARK: - UITextFieldDelegate
+//extension ViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        didUpdateRates()
+//        self.view.endEditing(true)
+//        return true
+//    }
+//}
 
