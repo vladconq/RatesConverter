@@ -16,6 +16,7 @@ class RatesManager {
     
     var currencyCode: [String] = []
     var values: [Double] = []
+    var currentRate: Double = 0.0
     
     func getRates() {
         guard let url = URL(string: "https://openexchangerates.org/api/latest.json?app_id=\(K.apiKey)") else {return}

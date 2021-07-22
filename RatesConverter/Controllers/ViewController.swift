@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     
     var ratesManager = RatesManager()
-    var currentRate: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +37,7 @@ extension ViewController: RatesManagerDelegate {
                 return
             }
             
-            self.labelResult.text = "\(self.currentRate * Double(self.textFieldInput.text!)!)"
+            self.labelResult.text = "\(self.ratesManager.currentRate * Double(self.textFieldInput.text!)!) $"
             self.pickerView.reloadAllComponents()
         }
     }
@@ -59,7 +58,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currentRate = ratesManager.values[row]
+        ratesManager.currentRate = ratesManager.values[row]
         didUpdateRates()
     }
 }
