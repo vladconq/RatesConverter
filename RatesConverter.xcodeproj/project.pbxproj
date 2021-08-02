@@ -17,6 +17,7 @@
 		0A6FE63926A768BB00BFD664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6FE63726A768BB00BFD664 /* LaunchScreen.storyboard */; };
 		0A6FE64826A8AEB100BFD664 /* RatesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FE64726A8AEB100BFD664 /* RatesData.swift */; };
 		0A71FBCC26B890180007737A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71FBCB26B890180007737A /* Constants.swift */; };
+		0A71FBD126B892D30007737A /* Rates Converter.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A71FBD026B892D30007737A /* Rates Converter.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		0A6FE64726A8AEB100BFD664 /* RatesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesData.swift; sourceTree = "<group>"; };
 		0A71FBCB26B890180007737A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0A71FBCD26B891520007737A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0A71FBD026B892D30007737A /* Rates Converter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rates Converter.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				0A6FE63A26A768BB00BFD664 /* Info.plist */,
 				0A71FBCB26B890180007737A /* Constants.swift */,
 				0A71FBCD26B891520007737A /* README.md */,
+				0A71FBD026B892D30007737A /* Rates Converter.png */,
 			);
 			path = RatesConverter;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A4C21C826A96E9600E5362E /* .gitignore in Resources */,
+				0A71FBD126B892D30007737A /* Rates Converter.png in Resources */,
 				0A6FE63926A768BB00BFD664 /* LaunchScreen.storyboard in Resources */,
 				0A6FE63626A768BB00BFD664 /* Assets.xcassets in Resources */,
 				0A6FE63426A768B900BFD664 /* Main.storyboard in Resources */,
