@@ -18,6 +18,9 @@
 		0A6FE64826A8AEB100BFD664 /* RatesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FE64726A8AEB100BFD664 /* RatesData.swift */; };
 		0A71FBD126B892D30007737A /* Rates Converter.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A71FBD026B892D30007737A /* Rates Converter.png */; };
 		467ABDC82812E8A5004E48E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABDC72812E8A5004E48E0 /* Constants.swift */; };
+		467ABDCD2812F1BD004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.20.png in Resources */ = {isa = PBXBuildFile; fileRef = 467ABDCA2812F1BC004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.20.png */; };
+		467ABDCE2812F1BD004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.16.49.png in Resources */ = {isa = PBXBuildFile; fileRef = 467ABDCB2812F1BC004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.16.49.png */; };
+		467ABDCF2812F1BD004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.41.png in Resources */ = {isa = PBXBuildFile; fileRef = 467ABDCC2812F1BC004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.41.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		0A71FBCD26B891520007737A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0A71FBD026B892D30007737A /* Rates Converter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rates Converter.png"; sourceTree = "<group>"; };
 		467ABDC72812E8A5004E48E0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../Constants.swift; sourceTree = "<group>"; };
+		467ABDCA2812F1BC004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.20.png"; sourceTree = "<group>"; };
+		467ABDCB2812F1BC004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.16.49.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.16.49.png"; sourceTree = "<group>"; };
+		467ABDCC2812F1BC004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.41.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.41.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 		0A6FE62B26A768B900BFD664 /* RatesConverter */ = {
 			isa = PBXGroup;
 			children = (
+				467ABDC92812F198004E48E0 /* pics */,
 				0A6FE64626A8AE9500BFD664 /* Models */,
 				0A6FE64526A8AE8D00BFD664 /* Views */,
 				0A6FE64426A8AE8300BFD664 /* Controllers */,
@@ -106,6 +113,16 @@
 				0A4C21C926A9923000E5362E /* RatesManager.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		467ABDC92812F198004E48E0 /* pics */ = {
+			isa = PBXGroup;
+			children = (
+				467ABDCB2812F1BC004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.16.49.png */,
+				467ABDCA2812F1BC004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.20.png */,
+				467ABDCC2812F1BC004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.41.png */,
+			);
+			path = pics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,9 +184,12 @@
 			files = (
 				0A4C21C826A96E9600E5362E /* .gitignore in Resources */,
 				0A71FBD126B892D30007737A /* Rates Converter.png in Resources */,
+				467ABDCF2812F1BD004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.41.png in Resources */,
 				0A6FE63926A768BB00BFD664 /* LaunchScreen.storyboard in Resources */,
 				0A6FE63626A768BB00BFD664 /* Assets.xcassets in Resources */,
+				467ABDCE2812F1BD004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.16.49.png in Resources */,
 				0A6FE63426A768B900BFD664 /* Main.storyboard in Resources */,
+				467ABDCD2812F1BD004E48E0 /* Simulator Screen Shot - iPhone 11 Pro - 2022-04-22 at 18.17.20.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
