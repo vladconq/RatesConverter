@@ -37,7 +37,10 @@ extension ViewController: RatesManagerDelegate {
                 return
             }
             
-            self.labelResult.text = "\(self.ratesManager.currentRate * Double(self.textFieldInput.text!)!) $"
+            let inputNumber = Double(self.textFieldInput.text!)!
+            let resultNumber = inputNumber / self.ratesManager.currentRate
+            let resultNumberStr = String(format: "%0.2f", resultNumber)
+            self.labelResult.text = "\(resultNumberStr) $"
             self.pickerView.reloadAllComponents()
         }
     }
